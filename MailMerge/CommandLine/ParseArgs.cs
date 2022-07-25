@@ -10,9 +10,12 @@ namespace MailMerge.CommandLine
         enum OddEven {Even,Odd}
         public static (Program.Command, (FileInfo,FileInfo)[], Dictionary<string, string>) FromStringArray(params string[] args)
         {
-            var command = args.Length > 1 && args[0].StartsWith("-") 
-                ? Enum.Parse<Program.Command>(args[0].TrimStart('-'),ignoreCase:true) 
-                : Program.Command.Merge;
+            var command = Program.Command.Merge;
+            if (args.Length > 1 && args[0].StartsWith("-"))
+            {
+                command = (Program.Command)Enum.Parse(typeof(Program.Command), args[0].TrimStart('-'), ignoreCase: true);
+            }
+            
             var cargs= (command == Program.Command.Merge) ? args : args.Skip(1);
 
             switch (command)
@@ -40,7 +43,7 @@ namespace MailMerge.CommandLine
             {
                 if (arg.Contains("="))
                 {
-                    var kv = arg.Split('=', 2);
+                    var kv = arg.Split(new[] { '=' }, 2);
                     mergefields.Add(kv[0], kv[1]);
                 }
                 else if (oddeven == OddEven.Even)

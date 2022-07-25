@@ -48,7 +48,7 @@ namespace MailMerge
             foreach (XmlNode node in simpleMergeFields)
             {
                 var fieldName = node.Attributes[OoXPath.winstr].Value
-                                        .Split(" ", StringSplitOptions.RemoveEmptyEntries)
+                                        .Split(new[]{' '}, StringSplitOptions.RemoveEmptyEntries)
                                         .Skip(1).FirstOrDefault();
                 if (fieldValues.ContainsKey(fieldName))
                 {
@@ -139,7 +139,7 @@ namespace MailMerge
                     {
                         instrRuns.Add(sibling);
                         var fieldName = instrNode.InnerText
-                                                .Split(" ", StringSplitOptions.RemoveEmptyEntries)
+                                                .Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
                                                 .Skip(1).FirstOrDefault();
                         if (fieldName==null)
                         {
@@ -161,7 +161,7 @@ namespace MailMerge
                         statePendingFieldName = false;
                         instrRuns.Add(sibling);
                         var fieldName = instrNode.InnerText
-                            .Split(" ", StringSplitOptions.RemoveEmptyEntries)
+                            .Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
                             .FirstOrDefault();
 
                         if (fieldValues.ContainsKey(fieldName))
