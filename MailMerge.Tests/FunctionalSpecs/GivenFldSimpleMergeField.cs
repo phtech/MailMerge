@@ -22,6 +22,12 @@ namespace MailMerge.Tests.FunctionalSpecs
             {"SimpleMergeField","SimpleMergeField Was Replaced with a Single Line"},
         };
 
+
+        static Dictionary<string, string> SingleLineWithCharacters = new Dictionary<string, string>
+        {
+            {"SimpleMergeField","SimpleMergeField Was & < > ' \" Replaced with a Single Line"},
+        };
+
         static Dictionary<string, string> MultiLine = new Dictionary<string, string>
         {
             {"SimpleMergeField","SimpleMergeField Was\nReplaced\nwith multiple lines\ndelimited by newlines/"}
@@ -29,12 +35,18 @@ namespace MailMerge.Tests.FunctionalSpecs
         
         [TestCase(DocWithSimpleMergeFieldDocx, nameof(SingleLine))]
         [TestCase(DocWithSimpleMergeFieldDocx, nameof(MultiLine))]
+        [TestCase(DocWithSimpleMergeFieldDocx, nameof(SingleLineWithCharacters))]
         public void Returns_TheDocumentWithMergeFieldsReplaced(string source, string sourceFieldsSource)
         {
             source = Path.Combine(TestDocDir, source);
             var sourceFields = GetType()
                               .GetField(sourceFieldsSource,BindingFlags.Static|BindingFlags.NonPublic)
                               .GetValue(this) as Dictionary<string,string>;
+
+            //foreach (var key in sourceFields.Keys)
+            //{
+            //    sourceFields[key] = sourceFields[key].EscapeXmlCharacters();
+            //}
 
             Stream output = null; AggregateException exceptions;
 

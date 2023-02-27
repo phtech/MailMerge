@@ -279,8 +279,8 @@ namespace MailMerge
                 XmlNode ItselfOrItsInnerTextNode(XmlNode n) => n.SelectSingleNode("w:t", OoXmlNamespace.Manager) ?? n;
 
                 var wtTextNode = ItselfOrItsInnerTextNode(wrTextOrRunNode);
-                
-                wtTextNode.InnerText = lines[0];
+                wtTextNode.FirstChild.InnerText = lines[0];
+
                 var lastNodeWritten = wtTextNode;
                 foreach (var line in lines.Skip(1))
                 {

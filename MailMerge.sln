@@ -1,19 +1,22 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27130.2036
+# Visual Studio Version 17
+VisualStudioVersion = 17.3.32929.385
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MailMerge", "MailMerge\MailMerge.csproj", "{7F098373-9BEB-410B-B73C-4CBF63D1BC1A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MailMerge", "MailMerge\MailMerge.csproj", "{7F098373-9BEB-410B-B73C-4CBF63D1BC1A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MailMerge.Tests", "MailMerge.Tests\MailMerge.Tests.csproj", "{9EC8A6BB-B112-4237-BB0F-0BBCB0CFF00C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MailMerge.Tests", "MailMerge.Tests\MailMerge.Tests.csproj", "{9EC8A6BB-B112-4237-BB0F-0BBCB0CFF00C}"
+	ProjectSection(ProjectDependencies) = postProject
+		{1E1C0CC1-1F77-453D-AC02-0AAEC6B71763} = {1E1C0CC1-1F77-453D-AC02-0AAEC6B71763}
+	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MsOpenXmlSdk", "PoCsForMsOpenXmlSdk\MsOpenXmlSdk.csproj", "{1E1C0CC1-1F77-453D-AC02-0AAEC6B71763}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MsOpenXmlSdk", "PoCsForMsOpenXmlSdk\MsOpenXmlSdk.csproj", "{1E1C0CC1-1F77-453D-AC02-0AAEC6B71763}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Docs", "Docs", "{7741C152-66A0-4B8D-A96E-3FBD920C1B4B}"
-ProjectSection(SolutionItems) = preProject
-	README.md = README.md
-	LICENSE = LICENSE
-EndProjectSection
+	ProjectSection(SolutionItems) = preProject
+		LICENSE = LICENSE
+		README.md = README.md
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

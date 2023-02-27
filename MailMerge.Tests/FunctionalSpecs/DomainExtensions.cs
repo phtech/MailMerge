@@ -18,10 +18,10 @@ namespace MailMerge.Tests.FunctionalSpecs
         public static string ShouldHaveBeenSplitOnNewLinesAndEachLineInserted(this string field, string outputXml)
         {
             var lines = field.Split(new[] {"\n", "\n\r"}, StringSplitOptions.None);
-            outputXml.ShouldContain(lines[0]);
+            outputXml.ShouldContain(lines[0].EscapeXmlCharacters());
             foreach (var line in lines.Skip(1))
             {
-                outputXml.ShouldContain($"<w:br />{line}");
+                outputXml.ShouldContain($"<w:br />{line.EscapeXmlCharacters()}");
             }
 
             return field;
